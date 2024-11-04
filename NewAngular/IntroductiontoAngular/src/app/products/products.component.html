@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <!-- <div class="col-lg-4" *ngFor= "let item of Products">
+            <div class="card" *ngIf = "item.qty > 1" style="width: 425px">
+                <img src="{{item.image}}" class="card-img-top" alt="..." height="250px">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.Name}}
+                    <span class="badge bg-danger" *ngIf="item.Price <= 800">SALE 20% off</span>
+                    <span class="badge bg-primary" *ngIf="item.Price >= 1000 && item.Price < 2000">SALE 10% off</span>
+                    <span class="badge bg-secondary" *ngIf="item.Price >= 2000">SALE ENDED</span>
+                    <span class="badge bg-warning" *ngIf="item.qty < 1">OUT OF STOCK</span>
+                  </h5>
+                    <p class="card">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">$ {{item.Price}}</a>
+                </div>
+              </div>
+        </div> -->
+@for(item of Products ; track $index){
+  <div class="col-lg-4">
+            <div class="card" style="width: 425px">
+                <img src="{{item.image}}" class="card-img-top" alt="..." height="250px">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.Name}} {{$index + 1}}
+                     @if(item.Price <= 800){
+                      <span class="badge bg-danger mx-1">SALE 20% off</span>
+                     }@else if(item.Price >= 1000 && item.Price < 2000){
+                      <span class="badge bg-primary mx-1">SALE 10% off</span>
+
+                     }@else if(item.Price >= 2000){
+                      <span class="badge bg-secondary mx-1">SALE ENDED</span>
+
+                     }
+                     @if(item.qty > 10){
+                      <span class="badge bg-success mx-1">Avaliable</span>
+
+                     }@else if(item.qty < 10 && item.qty > 1 ){
+                      <span class="badge bg-warning mx-1">Low in Stock</span>
+
+                     }@else if(item.qty < 1 ){
+                      <span class="badge bg-danger mx-1">Low in Stock</span>
+
+                     }
+                    
+                  </h5>
+                    <p class="card">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">$ {{item.Price}}</a>
+                </div>
+              </div>
+        </div> 
+}
+
+    </div>
+</div>
+
+<div class="Switch text-center">
+<input type="number"[(ngModel)] = "myNum">
+@switch(myNum){
+  @case(1){
+    <h3>Monday</h3>
+  }
+  @case(2){
+    <h3>Tuesday</h3>
+  }
+  @case(3){
+    <h3>Wednesday</h3>
+  }
+  @case(4){
+    <h3>Thursday</h3>
+  }
+  @case(5){
+    <h3>Friday</h3>
+  }
+  @case(6){
+    <h3>Saturday</h3>
+  }
+  @case(7){
+    <h3>Sunday</h3>
+  }
+
+  @default{
+    <h3 class="text-danger">Invalid Number</h3>
+
+  }
+}
+</div>
